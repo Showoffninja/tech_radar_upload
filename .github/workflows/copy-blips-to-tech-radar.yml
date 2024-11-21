@@ -1,0 +1,7 @@
+name: Copy Blips to centralized Tech Radar
+
+# run this workflow to submit you tech radar blips to the centralized tech radar
+on: 
+  push:
+    branches:
+      - main
