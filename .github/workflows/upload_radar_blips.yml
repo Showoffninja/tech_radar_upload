@@ -1,4 +1,5 @@
-on: [push]
+on:
+  workflow_dispatch:
 
 jobs:
   tech_radar_upload:
