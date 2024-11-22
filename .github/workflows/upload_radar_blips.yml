@@ -5,7 +5,7 @@ jobs:
   name: "test the action"
   steps:
     - uses: showoffninja/actions/tech_radar_upload
-    with:
-      source-path: "data/radar"
-      tech-radar-repo: "some_repo"
-      commit-email: "some@email.com"
+      with:
+        source-path: "data/radar"
+        tech-radar-repo: "some_repo"
+        commit-email: "some@email.com"
