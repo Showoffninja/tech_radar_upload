@@ -42,4 +42,5 @@ runs:
         echo "git add ."
         echo "git commit -m ${{ inputs.commit-message }}"
         echo "git push"
+      shell: bash
 
