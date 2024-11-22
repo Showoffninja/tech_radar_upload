@@ -31,7 +31,7 @@ runs:
       run: echo "git clone --single-branch upload https://${{ inputs.tech-radar-repo }}/data/radar"
       shell: bash
     - name: Copy blips to tech radar
-      run: echo "cp -r ${{ inputs.source-path }/data/radar/* ${{ inputs.tech-radar-repo }}/data/radar"
+      run: echo "cp -r ${{ inputs.source-path }}/data/radar/* ${{ inputs.tech-radar-repo }}/data/radar"
       shell: bash
     # Push blips to tech radar
     - name: Push blips to tech radar
