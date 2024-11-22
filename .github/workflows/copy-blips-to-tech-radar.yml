@@ -1,4 +1,4 @@
-name: Copy Blips to centralized Tech Radar
+name: "Copy Blips to centralized Tech Radar"
 description: "copy and push files from current repository to a centralized tech radar repository"
 inputs:
   tech-radar-repo:
