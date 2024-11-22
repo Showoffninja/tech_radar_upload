@@ -20,32 +20,33 @@ inputs:
 # run this workflow to submit you tech radar blips to the centralized tech radar
 on:
   workflow_dispatch:
-
-runs:
-  using: "composite"
-  steps:
-    # Checout local repository
-    - name: Checkout local repository
-      uses: actions/checkout@v4
-      with:
-        repository: ${{ github.repository }}
-    # Checkout tech radar repository
-    - name: Checkout tech radar repository
-      uses: actions/checkout@v4
-      with:
-        repository: ${{ inputs.tech-radar-repo }}
-    # Copy blips to tech radar
-    - name: Copy blips to tech radar
-      run: |
-        cp -r ${{ inputs.source-path }}/* $HOME/${{ inputs.tech-radar }}/data/radar
-      shell: bash
-    # Push blips to tech radar
-    - name: Push blips to tech radar
-      run: |
-        git config --global user.email "${{ inputs.commit-email }}"
-        git config --global user.name "GitHub Actions"
-        cd $HOME/tech-radar
-        git add .
-        git commit -m "${{ inputs.commit-message }}"
-        git push
-      shell: bash
+jobs:
+  name: "Upload Tech Radar blips"
+    runs:
+      using: "composite"
+      steps:
+        # Checout local repository
+        - name: Checkout local repository
+          uses: actions/checkout@v4
+          with:
+            repository: ${{ github.repository }}
+        # Checkout tech radar repository
+        - name: Checkout tech radar repository
+          uses: actions/checkout@v4
+          with:
+            repository: ${{ inputs.tech-radar-repo }}
+        # Copy blips to tech radar
+        - name: Copy blips to tech radar
+          run: |
+            cp -r ${{ inputs.source-path }}/* $HOME/${{ inputs.tech-radar }}/data/radar
+          shell: bash
+        # Push blips to tech radar
+        - name: Push blips to tech radar
+          run: |
+            git config --global user.email "${{ inputs.commit-email }}"
+            git config --global user.name "GitHub Actions"
+            cd $HOME/tech-radar
+            git add .
+            git commit -m "${{ inputs.commit-message }}"
+            git push
+          shell: bash
