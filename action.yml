@@ -28,21 +28,18 @@ runs:
       shell: bash
     # Checkout tech radar repository
     - name: Checkout tech radar repository
-      run: echo "git clone ${{ inputs.tech-radar-repo }}/data/radar"
+      run: echo "git clone --single-branch upload https://${{ inputs.tech-radar-repo }}/data/radar"
       shell: bash
-    - name: checkout branch
-      run: echo "checkout brach"
+    - name: Copy blips to tech radar
+      run: echo "cp -r ${{ inputs.source-path }/data/radar/* ${{ inputs.tech-radar-repo }}/data/radar"
       shell: bash
-#      - name: Copy blips to tech radar
-#        run: |
-#          cp -r ${{ inputs.source-path }}/* $HOME/${{ inputs.tech-radar }}/data/radar
-#      # Push blips to tech radar
-#      - name: Push blips to tech radar
-#        run: |
-#          git config --global user.email "${{ inputs.commit-email }}"
-#          git config --global user.name "GitHub Actions"
-#          cd $HOME/tech-radar
-#          git add .
-#          git commit -m "${{ inputs.commit-message }}"
-#          git push
+    # Push blips to tech radar
+    - name: Push blips to tech radar
+       run: |
+        echo "cd $HOME/tech-radar"
+        echo "git config --global user.email ${{ inputs.commit-email }}"
+        echo "git config --global user.name GitHub Actions"
+        echo "git add ."
+        echo "git commit -m ${{ inputs.commit-message }}"
+        echo "git push"
 
