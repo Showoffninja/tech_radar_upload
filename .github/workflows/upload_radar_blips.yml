@@ -1,11 +1,12 @@
 on: [push]
 
 jobs:
-  runs-on: ubuntu-latest
-  name: "test the action"
-  steps:
-    - uses: showoffninja/actions/tech_radar_upload
-      with:
-        source-path: "data/radar"
-        tech-radar-repo: "some_repo"
-        commit-email: "some@email.com"
+  tech_radar_upload:
+    runs-on: ubuntu-latest
+    name: "test the action"
+    steps:
+      - uses: showoffninja/actions/tech_radar_upload
+        with:
+          source-path: "data/radar"
+          tech-radar-repo: "some_repo"
+          commit-email: "some@email.com"
