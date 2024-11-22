@@ -20,6 +20,7 @@ inputs:
 # run this workflow to submit you tech radar blips to the centralized tech radar
 on:
   workflow_dispatch:
+  
 jobs:
   name: "Upload Tech Radar blips"
     runs:
