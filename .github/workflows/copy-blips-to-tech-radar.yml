@@ -1,7 +1,51 @@
 name: Copy Blips to centralized Tech Radar
+description: "copy and push files from current repository to a centralized tech radar repository"
 
+inputs:
+  tech-radar-repo:
+    description: "The repository to copy the blips to"
+    required: true
+    default: "tech-radar"
+  source-path:
+    description: "The path to the blips in the current repository"
+    required: true
+    default: "data/radar"
+  commit-message:
+    description: "The commit message to use when pushing the blips"
+    required: true
+    default: "doc: Add blips from repository"
+  commit-email:
+    description: "The email to use when pushing the blips"
+    required: true
 # run this workflow to submit you tech radar blips to the centralized tech radar
-on: 
+on:
   push:
     branches:
       - main
+jobs:
+  copy-blips:
+    runs-on: ubuntu-latest
+    steps:
+      # Checout local repository
+      - name: Checkout local repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository }}
+      # Checkout tech radar repository
+      - name: Checkout tech radar repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ inputs.tech-radar-repo }}
+      # Copy blips to tech radar
+      - name: Copy blips to tech radar
+        run: |
+          cp -r ${{ inputs.source-path }}/* $HOME/${{ inputs.tech-radar }}/data/radar
+      # Push blips to tech radar
+      - name: Push blips to tech radar
+        run: |
+          git config --global user.email "${{ inputs.commit-email }}"
+          git config --global user.name "GitHub Actions"
+          cd $HOME/tech-radar
+          git add .
+          git commit -m "${{ inputs.commit-message }}"
+          git push
