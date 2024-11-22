@@ -16,7 +16,10 @@ inputs:
   commit-email:
     description: "The email to use when pushing the blips"
     required: true
+
 # run this workflow to submit you tech radar blips to the centralized tech radar
+on:
+  workflow_dispatch:
 
 runs:
   using: "composite"
