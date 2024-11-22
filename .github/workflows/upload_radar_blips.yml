@@ -7,6 +7,6 @@ jobs:
     steps:
       - uses: showoffninja/tech_radar_upload@main
         with:
-          source-path: "data/radar"
+          source-path: ${{ GITHUB_REPOSITORY })}
           tech-radar-repo: "some_repo"
           commit-email: "some@email.com"

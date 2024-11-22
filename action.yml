@@ -24,14 +24,15 @@ runs:
   steps:
     # Checout local repository
     - name: Checkout local repository
-      run: echo "git clone ${{ GITHUB_REPOSITORY }}"
+      run: echo "git clone ${{ inputs.source-path }}"
       shell: bash
     # Checkout tech radar repository
     - name: Checkout tech radar repository
-      run: echo "git clone ${{ inputs.tech-radar }}/data/radar"
+      run: echo "git clone ${{ inputs.tech-radar-repo }}/data/radar"
       shell: bash
     - name: checkout branch
       run: echo "checkout brach"
+      shell: bash
 #      - name: Copy blips to tech radar
 #        run: |
 #          cp -r ${{ inputs.source-path }}/* $HOME/${{ inputs.tech-radar }}/data/radar
