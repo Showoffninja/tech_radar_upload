@@ -17,10 +17,7 @@ inputs:
     description: "The email to use when pushing the blips"
     required: true
 # run this workflow to submit you tech radar blips to the centralized tech radar
-on:
-  push:
-    branches:
-      - main
+
 runs:
   using: "composite"
   steps:
@@ -38,6 +35,7 @@ runs:
     - name: Copy blips to tech radar
       run: |
         cp -r ${{ inputs.source-path }}/* $HOME/${{ inputs.tech-radar }}/data/radar
+      shell: bash
     # Push blips to tech radar
     - name: Push blips to tech radar
       run: |
@@ -47,3 +45,4 @@ runs:
         git add .
         git commit -m "${{ inputs.commit-message }}"
         git push
+      shell: bash
