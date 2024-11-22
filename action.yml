@@ -35,7 +35,7 @@ runs:
       shell: bash
     # Push blips to tech radar
     - name: Push blips to tech radar
-       run: |
+      run: |
         echo "cd $HOME/tech-radar"
         echo "git config --global user.email ${{ inputs.commit-email }}"
         echo "git config --global user.name GitHub Actions"
@@ -43,4 +43,3 @@ runs:
         echo "git commit -m ${{ inputs.commit-message }}"
         echo "git push"
       shell: bash
-
