@@ -37,7 +37,6 @@ runs:
         destination_repo_name="${destination_repo_name##*/}"
         source_repo_name="${{ inputs.source-repo }}"
         source_repo_name="${source_repo_name##*/}"
-
         shopt -s nullglob
         echo "mkdir -p ${destination_repo_name}/data/radar"
         echo "cp -rvf ${source_repo_name}/data/radar/*.md ${destination_repo_name}/data/radar/*.md"
