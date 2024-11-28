@@ -40,7 +40,7 @@ runs:
       shell: bash
     # Copy blips
     - name: Copy blips to tech radar
-      run: echo "cp -r ${ source_repo_name }/data/radar/* ${{ destination_repo_name }}/data/radar"
+      run: echo "cp -r ${ source_repo_name }/data/radar/* ${ destination_repo_name }/data/radar"
       shell: bash
     # Push blips to tech radar
     - name: Push blips to tech radar
