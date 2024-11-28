@@ -30,15 +30,15 @@ runs:
     - name: Checkout tech radar repository
       run: echo "git clone --single-branch upload https://github.com/${{ inputs.tech-radar-repo }}.git"
       shell: bash
-    # Parameter expanision in bash & Copy blips
-    - name: Parameter expanision in bash
+    # Copy blips
+    - name: Copy blips to tech radar
       run: |
         destination_repo_name="${{ inputs.tech-radar-repo }}"
-        destination_repo_name="${repo_name##*/}"
-        source_repo_name="${{ inputs.tech-source-path }}"
-        source_repo_name="${repo_name##*/}"
+        destination_repo_name="${destination_repo_name##*/}"
+        source_repo_name="${{ inputs.source-repo }}"
+        source_repo_name="${source_repo_name##*/}"
         shopt -s nullglob
-        echo "cp -r ${ source_repo_name }/data/radar/* ${destination_repo_name}/data/radar"
+        cp -r ${source_repo_name}/data/radar/*.md ${destination_repo_name}/data/radar
       shell: bash
     # Push blips to tech radar
     - name: Push blips to tech radar
