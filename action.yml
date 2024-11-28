@@ -37,6 +37,7 @@ runs:
         destination_repo_name="${repo_name##*/}"
         source_repo_name="${{ inputs.tech-source-path }}"
         source_repo_name="${repo_name##*/}"
+      shell: bash
     # Copy blips
     - name: Copy blips to tech radar
       run: echo "cp -r ${ source_repo_name }/data/radar/* ${{ destination_repo_name }}/data/radar"
