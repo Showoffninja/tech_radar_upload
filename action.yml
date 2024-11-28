@@ -5,7 +5,7 @@ inputs:
   tech-radar-repo:
     description: "The repository to copy the blips to"
     required: true
-    default: "tech-radar"
+    default: "Showoffninja/tech_radar_test.git"
   source-path:
     description: "The path to the blips in the current repository"
     required: true
@@ -28,7 +28,7 @@ runs:
       shell: bash
     # Checkout tech radar repository
     - name: Checkout tech radar repository
-      run: echo "git clone --single-branch upload https://${{ inputs.tech-radar-repo }}/data/radar"
+      run: echo "git clone --single-branch upload https://github.com/${{ inputs.tech-radar-repo }}.git"
       shell: bash
     - name: Copy blips to tech radar
       run: echo "cp -r ${{ inputs.source-path }}/data/radar/* ${{ inputs.tech-radar-repo }}/data/radar"
