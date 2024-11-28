@@ -24,7 +24,7 @@ runs:
   steps:
     # Checout local repository
     - name: Checkout local repository
-      run: echo "git clone https://github.com/${{ inputs.source-path }}.git"
+      run: echo "git clone https://github.com/${{ inputs.source-repo }}.git"
       shell: bash
     # Checkout tech radar repository
     - name: Checkout tech radar repository
