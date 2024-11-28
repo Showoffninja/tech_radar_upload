@@ -39,7 +39,7 @@ runs:
         source_repo_name="${source_repo_name##*/}"
         shopt -s nullglob
         mkdir -p ${destination_repo_name}/data/radar
-        cp -r ${source_repo_name}/data/radar/*.md ${destination_repo_name}/data/radar/
+        cp -r ${source_repo_name}/data/radar/*.md ${destination_repo_name}/data/radar/*.md
       shell: bash
     # Push blips to tech radar
     - name: Push blips to tech radar
